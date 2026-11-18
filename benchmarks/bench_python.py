@@ -67,9 +67,11 @@ def postprocess(output, scale, pad_x, pad_y):
 
 
 def summarize(name, times_ms):
-    med = statistics.median(times_ms)
-    print(f"{name:<34} median {med:7.2f} ms   mean {statistics.mean(times_ms):7.2f} ms   "
-          f"({1000 / med:5.1f} FPS)")
+    ordered = sorted(times_ms)
+    med = statistics.median(ordered)
+    p95 = ordered[min(len(ordered) - 1, round(0.95 * (len(ordered) - 1)))]
+    print(f"{name:<34} median {med:7.2f} ms   mean {statistics.mean(ordered):7.2f} ms   "
+          f"p95 {p95:7.2f} ms   ({1000 / med:5.1f} FPS)")
 
 
 def bench_pytorch(images):
