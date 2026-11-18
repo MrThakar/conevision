@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Datasets and training output (too large for git)
+data/
+runs/
+
+# Model weights (download or train them instead)
+*.pt
+*.onnx
+
+# C++ build output
+cpp/build/
+
+# macOS
+.DS_Store
+outputs/
